@@ -4,4 +4,4 @@ use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/payment-intents', [PaymentController::class, 'createIntent']);
+Route::post('/payment-intents', [PaymentController::class, 'createIntent'])->name('api.payment-intents.store');;

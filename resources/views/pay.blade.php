@@ -26,7 +26,8 @@
             <h5 class="mb-3">Pay your invoice</h5>
 
             <!-- Form -->
-            <form id="pay-form" class="needs-validation" novalidate>
+            <form id="pay-form" data-api="{{ route('api.payment-intents.store') }}"
+                data-pk="{{ config('stripe.publishable') }}" class="needs-validation" novalidate>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">Invoice #</label>
@@ -36,9 +37,9 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Invoice Amount (USD)</label>
-                        <input id="amount" name="amount" type="number" step="0.01" min="1"
-                            class="form-control" required placeholder="250.00">
-                        <div class="invalid-feedback">Enter a valid amount (min $1).</div>
+                        <input id="amount" name="amount" type="number" class="form-control" required min="0.01"
+                            step="0.01" inputmode="decimal" placeholder="0.00">
+                        <div class="invalid-feedback">Please enter an amount greater than 0.</div>
                     </div>
 
                     <div class="col-md-6">
@@ -109,9 +110,6 @@
         </div>
     </div>
 
-    <script type="module" src="{{ asset('assets/js/validations.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/fee.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/api-payment.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
