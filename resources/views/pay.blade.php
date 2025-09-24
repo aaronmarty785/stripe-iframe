@@ -108,6 +108,8 @@
             <div id="result" class="mt-3"></div>
         </div>
     </div>
+
+    <script type="module" src="{{ asset('assets/js/validations.js') }}"></script>
 </body>
 
 </html>
