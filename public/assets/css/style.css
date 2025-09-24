@@ -1,0 +1,31 @@
+body {
+    background: #f8f9fa;
+}
+
+.card {
+    max-width: 680px;
+    margin: 24px auto;
+}
+
+.brand {
+    height: 40px;
+}
+
+.sr-amount-preview small {
+    color: #6c757d;
+}
+
+.sr-amount-preview .num {
+    font-weight: 600;
+}
+
+.ElementsGroup {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    background: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
