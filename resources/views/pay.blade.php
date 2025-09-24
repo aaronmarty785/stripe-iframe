@@ -110,6 +110,7 @@
     </div>
 
     <script type="module" src="{{ asset('assets/js/validations.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/fee.js') }}"></script>
 </body>
 
 </html>
