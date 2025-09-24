@@ -111,6 +111,8 @@
 
     <script type="module" src="{{ asset('assets/js/validations.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/fee.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/api-payment.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
 </html>
