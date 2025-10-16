@@ -2,24 +2,28 @@ export function fmt(n) {
     return `$${Number(n).toFixed(2)}`;
 }
 
-export function calcGross(method, net) {
-    const cents = Math.round(net * 100);
-    if (cents <= 0) return { fee: 0, gross: 0 };
+export function calcGross(method, amount) {
+    if (amount <= 0) return { fee: 0, gross: 0 };
 
     if (method === "card") {
-        const percent = 0.029,
-            fixed = 30;
-        const gross = Math.ceil((cents + fixed) / (1 - percent));
-        const fee = gross - cents;
-        return { fee: fee / 100, gross: gross / 100 };
+        const percent = 0.029;
+        const fixed = 0.3;
+        const fee = +(amount * percent + fixed).toFixed(2);
+        const net = +(amount - fee).toFixed(2);
+        const gross = +(amount + fee).toFixed(2);
+        return { fee, net, gross };
     } else {
-        const pct = 0.008,
-            cap = 500;
-        const grossUncapped = Math.ceil(cents / (1 - pct));
-        const feeUncapped = Math.ceil(grossUncapped * pct);
+        const pct = 0.008;
+        const cap = 5.0;
+
+        const grossUncapped = +(amount / (1 - pct)).toFixed(2);
+        const feeUncapped = +(grossUncapped * pct).toFixed(2);
+
         if (feeUncapped <= cap) {
-            return { fee: feeUncapped / 100, gross: grossUncapped / 100 };
+            return { fee: feeUncapped, gross: grossUncapped };
         }
-        return { fee: cap / 100, gross: (cents + cap) / 100 };
+
+        const grossCapped = +(amount + cap).toFixed(2);
+        return { fee: cap, gross: grossCapped };
     }
 }
